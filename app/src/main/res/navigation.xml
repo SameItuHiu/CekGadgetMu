@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/navigation_lampu"
+        android:icon="@drawable/ic_light_bulb"
+        android:title="@string/title_lampu" />
+
+    <item
+        android:id="@+id/navigation_kelembaban"
+        android:icon="@drawable/ic_humidity"
+        android:title="@string/title_kelembaban" />
+
+    <item
+        android:id="@+id/navigation_gas"
+        android:icon="@drawable/ic_gas"
+        android:title="@string/title_gas" />
+
+</menu>

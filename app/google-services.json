@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "691583427803",
+    "firebase_url": "https://cekgadgetmu2.firebaseio.com",
+    "project_id": "cekgadgetmu2",
+    "storage_bucket": "cekgadgetmu2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691583427803:android:917f48a8ab4d2237",
+        "android_client_info": {
+          "package_name": "id.example.bagasekaa.cekgadgetmu_2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "691583427803-kjh72j15p7hl23k3fgj2e08pb6mrq5n5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.example.bagasekaa.cekgadgetmu_2",
+            "certificate_hash": "bc63e14721352d8879baa87cdac1dd62e2c083ca"
+          }
+        },
+        {
+          "client_id": "691583427803-5pals6fiv1kg42ng8shc5b10hv1uvdl4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzj9fURPlijDnvFczLRVlLHvkTY2iAFmI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "691583427803-5pals6fiv1kg42ng8shc5b10hv1uvdl4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
