@@ -23,14 +23,12 @@ import com.google.firebase.database.FirebaseDatabase;
 public class sign_up extends AppCompatActivity {
 
     private EditText email,password,nama;
-    private String status;
-    private RadioGroup radio;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
 
-    FirebaseAuth mAuth;
-    FirebaseDatabase db;
-    DatabaseReference ref;
-
-
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase db;
+    private DatabaseReference ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,29 +39,13 @@ public class sign_up extends AppCompatActivity {
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         nama = findViewById(R.id.nama);
-        radio = findViewById(R.id.radio);
+        radioGroup = findViewById(R.id.radio);
+
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseDatabase.getInstance();
         ref = db.getReference().child("account");
 
-    }
-
-    public void radiobutton(View view) {
-        // Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
-
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.asUser:
-                if (checked)
-                    status = "user";
-                    break;
-            case R.id.asMitra:
-                if (checked)
-                    status = "mitra";
-                    break;
-        }
     }
 
     public void back(View view) {
@@ -77,6 +59,14 @@ public class sign_up extends AppCompatActivity {
         String emailUser = email.getText().toString().trim();
         String passwordUser = password.getText().toString().trim();
         final String namaUser = nama.getText().toString().trim();
+
+        // get selected radio button from radioGroup
+        int selectedId = radioGroup.getCheckedRadioButtonId();
+
+        // find the radiobutton by returned id
+        radioButton = (RadioButton) findViewById(selectedId);
+
+
 
         //validasi email dan password
         // jika email kosong
@@ -101,6 +91,7 @@ public class sign_up extends AppCompatActivity {
         }
         else {
 
+
             //create user dengan firebase auth
             mAuth.createUserWithEmailAndPassword(emailUser,passwordUser)
                     .addOnCompleteListener(sign_up.this, new OnCompleteListener<AuthResult>() {
@@ -114,9 +105,10 @@ public class sign_up extends AppCompatActivity {
                             }else {
                                 FirebaseUser user =  mAuth.getCurrentUser();
                                 String userId = user.getUid();
+                                String status = radioButton.getText().toString();
 
-                                    ref.child(status).child(userId).child("status").setValue(status);
-                                    ref.child(status).child(userId).child("nama").setValue(namaUser);
+                                    ref.child(userId).child("status").setValue(status);
+                                    ref.child(userId).child("nama").setValue(namaUser);
 
                                 Toast.makeText(sign_up.this,
                                         "Register berhasil",

@@ -69,20 +69,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
+                android:onClick="radiobutton"
                 android:orientation="horizontal">
                 <RadioButton
                     android:id="@+id/asUser"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:onClick="radiobutton"
                     android:text="@string/radio_user"/>
                 <RadioButton
                     android:id="@+id/asMitra"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:onClick="radiobutton"
                     android:text="@string/radio_mitra"/>
             </RadioGroup>
             <LinearLayout
