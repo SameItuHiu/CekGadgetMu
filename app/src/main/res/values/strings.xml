@@ -1,16 +1,27 @@
 <resources>
-    <string name="app_name">CekGadgetMu_2</string>
+    <string name="app_name">CekGadgetMu</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     //String SignUp
-    <string name="header_SignUp">Create an account</string>
-    <string name="header_radio">Create an account as : </string>
-    <string name="radio_user">User</string>
-    <string name="radio_mitra">Mitra</string>
-    <string name="email_signup">example@gmail.com</string>
-    <string name="password_signup">password</string>
     <string name="button_signup">Create account</string>
-    <string name="data_diri">Data Diri</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_nav__drawer">Nav_Drawer</string>
+
+    //intro
+    <string name="title1">Cekgadgetmu</string>
+    <string name="title2">User Account</string>
+    <string name="title3">Mitra Account</string>
+    <string name="title4">Delivery</string>
+    <string name="intro_1">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</string>
+    <string name="intro_2">bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</string>
+    <string name="intro_3">ccccccccccccccccccccccccccccccccccccccc</string>
+    <string name="intro_4">ddddddddddddddddddddddddddddddddddddddd</string>
 </resources>

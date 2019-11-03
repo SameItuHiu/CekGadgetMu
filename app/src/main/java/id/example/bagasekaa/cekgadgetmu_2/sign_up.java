@@ -1,8 +1,7 @@
 package id.example.bagasekaa.cekgadgetmu_2;
 
+import android.app.AlertDialog;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -10,6 +9,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,12 +24,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class sign_up extends AppCompatActivity {
 
-    private EditText email,password,nama;
-    private RadioGroup radioGroup;
-    private RadioButton radioButton;
+    private EditText email,password,verifpass,nama,phone;
+    private RadioGroup radioGroup_gender;
+    private RadioButton mradioButton;
 
     private FirebaseAuth mAuth;
-    private FirebaseDatabase db;
     private DatabaseReference ref;
 
     @Override
@@ -38,59 +39,73 @@ public class sign_up extends AppCompatActivity {
 
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
-        nama = findViewById(R.id.nama);
-        radioGroup = findViewById(R.id.radio);
-
+        verifpass = findViewById(R.id.retype);
+        nama = findViewById(R.id.fullname);
+        phone = findViewById(R.id.no_handphone);
+        radioGroup_gender = findViewById(R.id.radiogender);
 
         mAuth = FirebaseAuth.getInstance();
-        db = FirebaseDatabase.getInstance();
-        ref = db.getReference().child("account");
+        ref = FirebaseDatabase.getInstance().getReference().child("account");
 
     }
+
 
     public void back(View view) {
         Intent intent = new Intent(sign_up.this, MainActivity.class);
         startActivity(intent);
-        finish();
     }
 
     public void signup(View view) {
 
-        String emailUser = email.getText().toString().trim();
+        final String emailUser = email.getText().toString().trim();
         String passwordUser = password.getText().toString().trim();
-        final String namaUser = nama.getText().toString().trim();
+        final String mPhone = phone.getText().toString().trim();
+        final String mNama = nama.getText().toString().trim();
+        String verif = verifpass.getText().toString().trim();
 
         // get selected radio button from radioGroup
-        int selectedId = radioGroup.getCheckedRadioButtonId();
+        int select = radioGroup_gender.getCheckedRadioButtonId();
 
         // find the radiobutton by returned id
-        radioButton = (RadioButton) findViewById(selectedId);
+        mradioButton = (RadioButton) findViewById(select);
 
+        if (mNama.isEmpty()){
+            nama.setError("Nama tidak boleh kosong");
 
-
-        //validasi email dan password
-        // jika email kosong
-        if (emailUser.isEmpty()){
-            email.setError("Email tidak boleh kosong");
-        }
         // jika email not valid
-        else if (!Patterns.EMAIL_ADDRESS.matcher(emailUser).matches()){
+        }else if (!Patterns.EMAIL_ADDRESS.matcher(emailUser).matches()){
             email.setError("Email tidak valid");
+
+        // jika email kosong
+        }else if (emailUser.isEmpty()){
+            email.setError("Email tidak boleh kosong");
+
+        // jika nomor handphone kosong
+        }else if (mPhone.isEmpty()){
+            phone.setError("Nomor handphone tidak boleh kosong");
         }
-        // jika nama kosong
-        else if (namaUser.isEmpty()){
-            password.setError("Nama tidak boleh kosong");
-        }
+
         // jika password kosong
         else if (passwordUser.isEmpty()){
             password.setError("Password tidak boleh kosong");
         }
+
         //jika password kurang dari 6 karakter
         else if (passwordUser.length() < 6){
             password.setError("Password minimal terdiri dari 6 karakter");
-        }
-        else {
 
+            // jika penulisan password tidak sama
+        }else if (!passwordUser.equals(verif)){
+            verifpass.setError("Password tidak sama");
+
+
+        }else {
+
+            final AlertDialog.Builder mBuiler = new AlertDialog.Builder(sign_up.this);
+            final View mView = getLayoutInflater().inflate(R.layout.popup,null);
+            mBuiler.setView(mView);
+            final AlertDialog dialog = mBuiler.create();
+            dialog.show();
 
             //create user dengan firebase auth
             mAuth.createUserWithEmailAndPassword(emailUser,passwordUser)
@@ -99,19 +114,24 @@ public class sign_up extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             //jika gagal register do something
                             if (!task.isSuccessful()){
+                                dialog.dismiss();
                                 Toast.makeText(sign_up.this,
-                                        "Register gagal karena "+ task.getException().getMessage(),
+                                        "Signup fail"+ task.getException().getMessage(),
                                         Toast.LENGTH_LONG).show();
                             }else {
                                 FirebaseUser user =  mAuth.getCurrentUser();
                                 String userId = user.getUid();
-                                String status = radioButton.getText().toString();
-
-                                    ref.child(userId).child("status").setValue(status);
-                                    ref.child(userId).child("nama").setValue(namaUser);
+                                user.sendEmailVerification();
+                                String gender = mradioButton.getText().toString();
+                                    ref.child(userId).child("nama").setValue(mNama);
+                                    ref.child(userId).child("email").setValue(emailUser);
+                                    ref.child(userId).child("gender").setValue(gender);
+                                    ref.child(userId).child("No_Handphone").setValue(mPhone);
+                                    ref.child(userId).child("status").setValue("user");
+                                    dialog.dismiss();
 
                                 Toast.makeText(sign_up.this,
-                                        "Register berhasil",
+                                        "Register berhasil, Cek email untuk melakukan verifikasi",
                                         Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(sign_up.this,MainActivity.class));
                             }
@@ -121,5 +141,9 @@ public class sign_up extends AppCompatActivity {
     }
 
 
+    public void signin(View view) {
+        Intent intent = new Intent(sign_up.this, login.class);
+        startActivity(intent);
+    }
 }
 
