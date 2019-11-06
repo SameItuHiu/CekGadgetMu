@@ -123,6 +123,7 @@ public class user_order2 extends AppCompatActivity {
 
                     }else if (mstatus.equals("ditolak")){
                         startActivity(new Intent(user_order2.this, user_order.class));
+                        finish();
 
                     }else if(mstatus.equals("selesai")){
                         alamat.setVisibility(View.GONE);
@@ -221,15 +222,16 @@ public class user_order2 extends AppCompatActivity {
                 FirebaseDatabase.getInstance().getReference().child("account").child(userID).child("order").child(id_order).child("feedback").child("komentar").setValue(mFeedback);
 
                 dialog.dismiss();
-
                 finish();
                 startActivity(getIntent());
+
             }
         });
     }
 
     public void back(View view) {
         startActivity(new Intent(user_order2.this, user_order.class));
+        finish();
     }
 
     public void google_maps(View view) {
@@ -277,5 +279,12 @@ public class user_order2 extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, user_order.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
     }
 }

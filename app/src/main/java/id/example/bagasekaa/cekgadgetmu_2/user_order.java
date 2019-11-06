@@ -79,6 +79,7 @@ public class user_order extends AppCompatActivity {
 
                     //starting the activity with intent
                     startActivity(intent);
+                    finish();
                 }
             }
         });
@@ -111,9 +112,16 @@ public class user_order extends AppCompatActivity {
             }
         });
     }
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, menu_user.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
+    }
 
     public void back(View view) {
         startActivity(new Intent(user_order.this, menu_user.class));
+        finish();
     }
 }

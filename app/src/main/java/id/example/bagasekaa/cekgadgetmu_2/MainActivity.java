@@ -24,6 +24,12 @@ public class MainActivity extends AppCompatActivity {
     intro4 intro4;
 
     @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -39,13 +45,13 @@ public class MainActivity extends AppCompatActivity {
     public void login(View view) {
         Intent intent = new Intent(MainActivity.this,login.class);
         startActivity(intent);
-
+        finish();
     }
 
     public void create_account(View view) {
         Intent intent = new Intent(MainActivity.this, sign_up.class);
         startActivity(intent);
-
+        finish();
     }
 
     private void setupViewPager(ViewPager viewPager) {

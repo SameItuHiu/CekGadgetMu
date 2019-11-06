@@ -64,6 +64,7 @@ public class edit_toko_nama extends AppCompatActivity {
     public void back(View view) {
         Intent intent = new Intent(edit_toko_nama.this, user_account_edit.class);
         startActivity(intent);
+        finish();
     }
 
     public void simpan(View view) {
@@ -80,5 +81,12 @@ public class edit_toko_nama extends AppCompatActivity {
             dialog.show();
             databaseReference.setValue(new_toko.getText().toString());
         }
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, user_account_edit.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
     }
 }

@@ -41,6 +41,7 @@ public class edit_jadwal_buka_toko extends AppCompatActivity {
 
     public void back(View view) {
         startActivity(new Intent(edit_jadwal_buka_toko.this, user_account_edit.class));
+        finish();
     }
 
     public void buka(View view) {
@@ -105,5 +106,11 @@ public class edit_jadwal_buka_toko extends AppCompatActivity {
             txt_peringatan.setText("Jadwal sudah diganti");
             dialog.show();
         }
+    }
+    public void onBackPressed() {
+        Intent intent = new Intent(this, user_account_edit.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
     }
 }

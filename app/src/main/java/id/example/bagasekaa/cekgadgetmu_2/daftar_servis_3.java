@@ -38,8 +38,17 @@ public class daftar_servis_3 extends AppCompatActivity {
         ref = FirebaseDatabase.getInstance().getReference().child("toko").child(userID);
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, daftar_servis2.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
+    }
+
     public void back(View view) {
         startActivity(new Intent(daftar_servis_3.this, set_lokasi.class));
+        finish();
     }
 
     public void Finish(View view) {
@@ -78,6 +87,7 @@ public class daftar_servis_3 extends AppCompatActivity {
             ref.child("jadwal").child("tutup").child("menit").setValue(tMenit);
             FirebaseDatabase.getInstance().getReference().child("account").child(userID).child("status").setValue("mitra");
             startActivity(new Intent(daftar_servis_3.this, menu_user.class));
+            finish();
         }
 
     }

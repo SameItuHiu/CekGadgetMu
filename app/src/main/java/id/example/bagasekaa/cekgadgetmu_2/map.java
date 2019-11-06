@@ -137,6 +137,7 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
                     Intent intent = new Intent(map.this, User_Diagnosa.class);
                     intent.putExtra(User_Diagnosa.key, key);
                     startActivity(intent);
+                    finish();
                 }
             }
         });
@@ -395,6 +396,15 @@ public class map extends AppCompatActivity implements OnMapReadyCallback {
     public void back(View view) {
         Intent intent = new Intent(map.this, menu_user.class);
         startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, menu_user.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
     }
 
 }

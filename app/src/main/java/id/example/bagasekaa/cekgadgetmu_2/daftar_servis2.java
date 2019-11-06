@@ -37,6 +37,14 @@ public class daftar_servis2 extends AppCompatActivity {
     private DatabaseReference ref;
 
     @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, daftar_servis.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar_servis2);
@@ -78,6 +86,7 @@ public class daftar_servis2 extends AppCompatActivity {
 
     public void back(View view) {
         startActivity(new Intent(daftar_servis2.this, daftar_servis.class));
+        finish();
     }
 
     public void Finish(View view) {
@@ -109,6 +118,7 @@ public class daftar_servis2 extends AppCompatActivity {
             Intent intent = new Intent(daftar_servis2.this, set_lokasi.class);
             intent.putExtras(bundle1);
             startActivity(intent);
+            finish();
         }
     }
 }

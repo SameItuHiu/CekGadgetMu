@@ -3,7 +3,6 @@ package id.example.bagasekaa.cekgadgetmu_2;
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -102,52 +101,35 @@ public class menu_user extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
+
     public void maps(View view) {
         Intent intent = new Intent(menu_user.this, map.class);
         startActivity(intent);
-
+        finish();
     }
 
     public void chat(View view) {
         Intent intent = new Intent(menu_user.this, chat.class);
         startActivity(intent);
-
+        finish();
     }
 
     public void akun(View view) {
         Intent intent = new Intent(menu_user.this, user_account.class);
         startActivity(intent);
-
+        finish();
     }
 
     public void buka_servis(View view) {
 
-        view = getLayoutInflater().inflate(R.layout.popup_verif_mitra, null);
-        final BottomSheetDialog dialog = new BottomSheetDialog(this);
-        dialog.setContentView(view);
-
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                String status = dataSnapshot.child("account").child(userID).child("status").getValue().toString();
-
-                if (status.equals("verif")){
-                    Intent intent = new Intent(menu_user.this, daftar_servis.class);
-                    startActivity(intent);
-                    finish();
-
-                }else{
-                    dialog.show();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("Data", "Error: ", databaseError.toException());
-            }
-        });
-
+        Intent intent = new Intent(menu_user.this, daftar_servis.class);
+        startActivity(intent);
+        finish();
 
     }
 
@@ -161,11 +143,13 @@ public class menu_user extends AppCompatActivity {
     public void order(View view) {
         Intent intent = new Intent(menu_user.this, user_order.class);
         startActivity(intent);
+        finish();
     }
 
     public void order_masuk(View view) {
         Intent intent = new Intent(menu_user.this, user_order_mitra.class);
         startActivity(intent);
+        finish();
     }
 
 }

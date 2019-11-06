@@ -32,6 +32,7 @@ public class edit_password extends AppCompatActivity {
     public void back(View view) {
         Intent intent = new Intent(edit_password.this, user_account_edit.class);
         startActivity(intent);
+        finish();
     }
 
     public void kirim(View view) {
@@ -57,5 +58,12 @@ public class edit_password extends AppCompatActivity {
                 }
             });
         }
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, user_account_edit.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
     }
 }

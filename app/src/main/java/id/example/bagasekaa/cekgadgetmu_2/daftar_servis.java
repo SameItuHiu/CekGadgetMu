@@ -29,6 +29,14 @@ public class daftar_servis extends AppCompatActivity {
     private Context context;
 
     @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, menu_user.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daftar_servis);
@@ -82,6 +90,7 @@ public class daftar_servis extends AppCompatActivity {
                     Intent intent = new Intent(daftar_servis.this, daftar_servis2.class);
                     intent.putExtras(bundle);
                     startActivity(intent);
+                    finish();
                 }
 
             }
@@ -113,11 +122,12 @@ public class daftar_servis extends AppCompatActivity {
                 //txt_peringatan.setText(mToko + mLayanan);
                 //dialog.show();
                 startActivity(intent);
+                finish();
             }
     }
 
     public void back(View view) {
         startActivity(new Intent(daftar_servis.this, menu_user.class));
-
+        finish();
     }
 }

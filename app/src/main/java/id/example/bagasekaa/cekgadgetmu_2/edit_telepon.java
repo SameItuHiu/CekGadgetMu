@@ -102,6 +102,7 @@ public class edit_telepon extends AppCompatActivity {
     public void back(View view) {
         Intent intent = new Intent(edit_telepon.this, user_account_edit.class);
         startActivity(intent);
+        finish();
     }
 
     public void simpan(View view) {
@@ -118,7 +119,12 @@ public class edit_telepon extends AppCompatActivity {
             dialog.show();
             databaseReference.setValue(telepon_baru.getText().toString());
         }
-
-
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, user_account_edit.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
     }
 }

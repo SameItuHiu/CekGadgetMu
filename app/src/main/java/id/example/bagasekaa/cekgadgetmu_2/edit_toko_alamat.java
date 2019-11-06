@@ -65,6 +65,7 @@ public class edit_toko_alamat extends AppCompatActivity {
     public void back(View view) {
         Intent intent = new Intent(edit_toko_alamat.this, user_account_edit.class);
         startActivity(intent);
+        finish();
     }
 
     public void simpan(View view) {
@@ -90,5 +91,12 @@ public class edit_toko_alamat extends AppCompatActivity {
             databaseReference.child("alamat").setValue(alamat.getText().toString());
         }
 
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, user_account_edit.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
     }
 }

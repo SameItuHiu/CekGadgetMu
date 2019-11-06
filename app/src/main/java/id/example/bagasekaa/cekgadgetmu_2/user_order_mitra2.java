@@ -174,6 +174,7 @@ public class user_order_mitra2 extends AppCompatActivity {
                     FirebaseDatabase.getInstance().getReference().child("account").child(id_pelanggan).child("order").child(id_order).child("alasan").setValue(mAlasan);
                     dialog.dismiss();
                     startActivity(new Intent(user_order_mitra2.this, user_order_mitra.class));
+                    finish();
                 }
             }
         });
@@ -250,6 +251,7 @@ public class user_order_mitra2 extends AppCompatActivity {
 
     public void back(View view) {
         startActivity(new Intent(user_order_mitra2.this, user_order_mitra.class));
+        finish();
     }
 
     public void catatan(View view) {
@@ -320,5 +322,12 @@ public class user_order_mitra2 extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, user_order_mitra.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
     }
 }

@@ -31,6 +31,14 @@ public class chat extends AppCompatActivity {
 
     public void back(View view) {
         startActivity(new Intent(chat.this, menu_user.class));
+        finish();
+    }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, menu_user.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
     }
 }

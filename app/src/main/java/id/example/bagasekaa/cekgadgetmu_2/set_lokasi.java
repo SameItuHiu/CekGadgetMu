@@ -79,6 +79,7 @@ public class set_lokasi extends AppCompatActivity implements OnMapReadyCallback 
 
     public void back(View view) {
         startActivity(new Intent(set_lokasi.this, daftar_servis2.class));
+        finish();
     }
     @Override
     public void onPause() {
@@ -224,7 +225,13 @@ public class set_lokasi extends AppCompatActivity implements OnMapReadyCallback 
             // permissions this app might request
         }
     }
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, daftar_servis2.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
+    }
     public void set(View view) {
 
         Bundle bundle = getIntent().getExtras();
@@ -248,6 +255,7 @@ public class set_lokasi extends AppCompatActivity implements OnMapReadyCallback 
         Intent intent = new Intent(set_lokasi.this, daftar_servis_3.class);
         intent.putExtras(bundle1);
         startActivity(intent);
+        finish();
 
     }
 }

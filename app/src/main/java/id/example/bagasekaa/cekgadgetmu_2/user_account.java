@@ -16,10 +16,6 @@ import id.example.bagasekaa.cekgadgetmu_2.account.user;
 
 public class user_account extends AppCompatActivity {
 
-    private Toolbar mTopToolbar;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,29 +26,37 @@ public class user_account extends AppCompatActivity {
         ViewPager vPager = findViewById(R.id.pager);
         TabLayout tLayout = findViewById(R.id.tablayout);
 
-// attach tablayout with viewpager
+        // attach tablayout with viewpager
         tLayout.setupWithViewPager(vPager);
 
         TabPagerAdapter adapter = new TabPagerAdapter(getSupportFragmentManager());
 
-// add your fragments
+        // add your fragments
         adapter.addFrag(new user(), "User");
         adapter.addFrag(new mitra(), "Mitra");
 
-// set adapter on viewpager
+        // set adapter on viewpager
         vPager.setAdapter(adapter);
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, menu_user.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
+    }
 
     public void back(View view) {
         Intent intent = new Intent(user_account.this, menu_user.class);
         startActivity(intent);
+        finish();
     }
 
     public void setting(View view) {
         Intent intent = new Intent(user_account.this, user_account_edit.class);
         startActivity(intent);
+        finish();
     }
 }

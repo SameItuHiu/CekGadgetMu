@@ -86,6 +86,7 @@ public class edit_toko_lokasi extends AppCompatActivity implements OnMapReadyCal
 
     public void back(View view) {
         startActivity(new Intent(edit_toko_lokasi.this, user_account_edit.class));
+        finish();
     }
     @Override
     public void onPause() {
@@ -239,5 +240,14 @@ public class edit_toko_lokasi extends AppCompatActivity implements OnMapReadyCal
         ref.child("alamat").child("kordinat").child("longitude").setValue(mLong);
         Intent intent = new Intent(edit_toko_lokasi.this, user_account_edit.class);
         startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, user_account_edit.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
     }
 }

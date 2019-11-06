@@ -23,7 +23,6 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".edit_jadwal_buka_toko"/>
-        <activity android:name=".verif_pembayaran" />
         <activity android:name=".edit_toko_buka" />
         <activity android:name=".daftar_servis_3" />
         <activity android:name=".edit_toko_lokasi" />
@@ -32,8 +31,6 @@
         <activity android:name=".edit_password" />
         <activity android:name=".edit_email" />
         <activity android:name=".edit_telepon" />
-        <activity android:name=".user_order_mitra_rincian" />
-        <activity android:name=".user_order_mitra_catatan" />
         <activity android:name=".user_order_mitra2" />
         <activity android:name=".user_order_mitra" />
         <activity android:name=".set_lokasi" />

@@ -41,6 +41,13 @@ public class login extends AppCompatActivity {
     BottomSheetDialog dialog2,dialog1;
 
     @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -150,7 +157,7 @@ public class login extends AppCompatActivity {
     public void back(View view) {
         Intent intent = new Intent(login.this, MainActivity.class);
         startActivity(intent);
-
+        finish();
     }
 
     public void forgot(View view) {
@@ -161,6 +168,6 @@ dialog2.show();
     public void signup(View view) {
         Intent intent = new Intent(login.this, sign_up.class);
         startActivity(intent);
-
+        finish();
     }
 }

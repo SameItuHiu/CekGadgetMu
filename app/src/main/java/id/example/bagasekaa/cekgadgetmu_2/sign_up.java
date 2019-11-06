@@ -32,6 +32,14 @@ public class sign_up extends AppCompatActivity {
     private DatabaseReference ref;
 
     @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
@@ -53,6 +61,7 @@ public class sign_up extends AppCompatActivity {
     public void back(View view) {
         Intent intent = new Intent(sign_up.this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void signup(View view) {
@@ -134,6 +143,7 @@ public class sign_up extends AppCompatActivity {
                                         "Register berhasil, Cek email untuk melakukan verifikasi",
                                         Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(sign_up.this,MainActivity.class));
+                                finish();
                             }
                         }
                     });
@@ -144,6 +154,7 @@ public class sign_up extends AppCompatActivity {
     public void signin(View view) {
         Intent intent = new Intent(sign_up.this, login.class);
         startActivity(intent);
+        finish();
     }
 }
 

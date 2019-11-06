@@ -61,40 +61,56 @@ public class user_account_edit extends AppCompatActivity {
     public void back(View view) {
         Intent intent = new Intent(user_account_edit.this, user_account.class);
         startActivity(intent);
+        finish();
     }
 
     public void edit_telepon(View view) {
         Intent intent = new Intent(user_account_edit.this, edit_telepon.class);
         startActivity(intent);
+        finish();
     }
 
     public void edit_email(View view) {
         Intent intent = new Intent(user_account_edit.this, edit_email.class);
         startActivity(intent);
+        finish();
     }
 
     public void edit_password(View view) {
         Intent intent = new Intent(user_account_edit.this, edit_password.class);
         startActivity(intent);
+        finish();
     }
 
     public void edit_nama_toko(View view) {
         Intent intent = new Intent(user_account_edit.this, edit_toko_nama.class);
         startActivity(intent);
+        finish();
     }
 
     public void edit_alamat_toko(View view) {
         Intent intent = new Intent(user_account_edit.this, edit_toko_alamat.class);
         startActivity(intent);
+        finish();
     }
 
     public void edit_lokasi_toko(View view) {
         Intent intent = new Intent(user_account_edit.this, edit_toko_lokasi.class);
         startActivity(intent);
+        finish();
     }
 
     public void jadwal_buka(View view) {
         Intent intent = new Intent(user_account_edit.this, edit_jadwal_buka_toko.class);
         startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, user_account.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
     }
 }

@@ -98,6 +98,7 @@ public class User_Diagnosa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(User_Diagnosa.this, user_order.class));
+                finish();
                 dialog.dismiss();
             }
         });
@@ -107,6 +108,7 @@ public class User_Diagnosa extends AppCompatActivity {
             public void onClick(View v) {
                 dialog.dismiss();
                 startActivity(new Intent(User_Diagnosa.this, menu_user.class));
+                finish();
             }
         });
 
@@ -161,9 +163,16 @@ public class User_Diagnosa extends AppCompatActivity {
 
     public void back(View view) {
         startActivity(new Intent(User_Diagnosa.this, map.class));
-
+        finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, map.class);
+        startActivity(intent);
+        finish();
+        super.onBackPressed();
+    }
 
     public void date(View view) {
         // Get Current Date

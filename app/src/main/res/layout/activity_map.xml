@@ -30,7 +30,7 @@
             android:paddingRight="10dp"
             android:paddingLeft="10dp"
             android:paddingBottom="10dp"
-            layout="@layout/activity_popup_tukang"/>
+            layout="@layout/popup_maps"/>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
